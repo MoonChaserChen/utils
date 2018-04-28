@@ -21,6 +21,7 @@ public class XMLUtil {
 
     public static <T> T Xml2Object(String xml, String classAlias ,T t){
         XStream xStream = new XStream();
+        System.out.println("xStream = " + xStream);
         //为类名取个别名
         xStream.alias(classAlias, t.getClass());
         //由于上面有<unknow>标签，忽略掉，否则会报错
