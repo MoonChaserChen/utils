@@ -1,6 +1,6 @@
 package test.utils;
 
-import moon.chaser.utils.JedisUtil;
+import me.chin.utils.JedisUtil;
 import org.junit.Test;
 import redis.clients.jedis.Jedis;
 

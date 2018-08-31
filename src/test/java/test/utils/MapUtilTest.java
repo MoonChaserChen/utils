@@ -1,6 +1,5 @@
 package test.utils;
 
-import moon.chaser.utils.MapUtil;
 import java.util.*;
 
 /**
@@ -12,7 +11,7 @@ public class MapUtilTest {
         Map<String,String[]> map = new HashMap<>();
         map.put("a",new String[]{"1","first"});
         map.put("b",new String[]{"2","second"});
-        Map<String, String> params2Map = MapUtil.requestParams2Map(map,"-");
+        Map<String, String> params2Map =MapUtils.requestParams2Map(map,"-");
         Iterator<String> iterator = params2Map.keySet().iterator();
         while (iterator.hasNext()) {
             String key = iterator.next();
@@ -33,7 +32,7 @@ public class MapUtilTest {
         list.add("def");
         list.add("def");
         list.add("i");
-        List<Map.Entry<Object, Integer>> frequencyDesc = MapUtil.getFrequency(list,false);
+        List<Map.Entry<Object, Integer>> frequencyDesc =MapUtils.getFrequency(list,false);
         System.out.println(frequencyDesc);
     }
 }

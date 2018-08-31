@@ -1,7 +1,7 @@
 package test.utils;
 
-import moon.chaser.utils.RsaCheckUtil;
-import moon.chaser.utils.RsaSignUtil;
+import me.chin.utils.RsaCheckUtil;
+import me.chin.utils.RsaSignUtil;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -16,10 +16,8 @@ public class RSAUtilTest {
         Map<String, String> paramMap = new HashMap<>();
         paramMap.put("param1","param1");
         paramMap.put("param2","param2");
-        paramMap.put("charset","utf-8");
-        paramMap.put("sign_type","RSA2");
-//        System.out.println("++++++++++++++++");
-//        Map<String, String> resultMap = RsaSignUtil.rsaSign(paramMap);
+//        paramMap.put("charset","utf-8");
+//        paramMap.put("sign_type","RSA2");
         Map<String, String> resultMap = RsaSignUtil.rsaSign(paramMap);
         boolean b = RsaCheckUtil.rsaCheck(resultMap);
         System.out.println("b = " + b);

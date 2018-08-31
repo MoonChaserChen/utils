@@ -1,8 +1,8 @@
 package test.utils;
 
-import moon.chaser.utils.HttpClientUtil;
-import moon.chaser.utils.JsonUtil;
-import moon.chaser.utils.RsaSignUtil;
+import me.chin.utils.HttpClientUtil;
+import me.chin.utils.JsonUtil;
+import me.chin.utils.RsaSignUtil;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -15,7 +15,7 @@ import java.util.Map;
 public class HttpClientUtilTest {
     @Test
     public void sendTest() {
-        Map<String, Object> resultMap = JsonUtil.strJson2Map(HttpClientUtil.getInstance().sendHttpPost("http://localhost:8082/note/testHttpClient", "param1=param1&param2=param2"));
+        Map<String, Object> resultMap = JsonUtil.jsonStr2Map(HttpClientUtil.getInstance().sendHttpPost("http://localhost:8082/note/testHttpClient", "param1=param1&param2=param2"));
         Iterator<String> iterator = resultMap.keySet().iterator();
         while (iterator.hasNext()){
             String key = iterator.next();
@@ -28,7 +28,7 @@ public class HttpClientUtilTest {
         Map<String, String> paramMap = new HashMap<>();
         paramMap.put("param1","param1");
         paramMap.put("param2","param2");
-        Map<String, Object> resultMap = JsonUtil.strJson2Map(HttpClientUtil.getInstance().sendHttpPost("http://localhost:8082/note/testHttpClient", paramMap));
+        Map<String, Object> resultMap = JsonUtil.jsonStr2Map(HttpClientUtil.getInstance().sendHttpPost("http://localhost:8082/note/testHttpClient", paramMap));
         Iterator<String> iterator = resultMap.keySet().iterator();
         while (iterator.hasNext()){
             String key = iterator.next();
@@ -42,7 +42,7 @@ public class HttpClientUtilTest {
         paramMap.put("param1","param1");
         paramMap.put("param2","param2");
         Map<String, String> map = RsaSignUtil.rsaSign(paramMap);
-        Map<String, Object> resultMap = JsonUtil.strJson2Map(HttpClientUtil.getInstance().sendHttpPost("http://localhost:8082/note/testRSA", map));
+        Map<String, Object> resultMap = JsonUtil.jsonStr2Map(HttpClientUtil.getInstance().sendHttpPost("http://localhost:8082/note/testRSA", map));
         for (String s : resultMap.keySet()) {
             System.out.println(s + "," + resultMap.get(s));
         }

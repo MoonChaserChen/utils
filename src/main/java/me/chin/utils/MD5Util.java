@@ -1,4 +1,4 @@
-package moon.chaser.utils;
+package me.chin.utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -15,12 +15,12 @@ public class MD5Util {
      * @return 签名结果字符串
      */
     public static String buildMysign(Map<String, String> sArray,String keyName,String secretKey) {
-        if (StringUtil.isBlank(keyName)){
+        if (keyName != null && keyName.trim().length() != 0){
             throw new RuntimeException("keyName can't be empty");
         }
         String mysign = "";
         try {
-            String prestr = MapUtil.map2OrderedString(sArray);
+            String prestr = TransferUtils.map2OrderedString(sArray);
             prestr = prestr + "&" + keyName + "=" + secretKey;
             mysign = getMD5String(prestr);
         } catch (Exception e) {
@@ -39,7 +39,7 @@ public class MD5Util {
     public static String buildMysign(Map<String, String> sArray,String secretKey) {
         String mysign = "";
         try {
-            String prestr = MapUtil.map2OrderedString(sArray);
+            String prestr =TransferUtils.map2OrderedString(sArray);
             prestr = prestr + secretKey;
             mysign = getMD5String(prestr);
         } catch (Exception e) {

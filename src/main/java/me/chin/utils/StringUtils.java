@@ -1,20 +1,17 @@
-package moon.chaser.utils;
-
-import org.apache.commons.lang3.StringUtils;
-import org.junit.Test;
+package me.chin.utils;
 
 /**
  * Created by ChenHouZhang on 2017/11/17.
  * 字符串工具类
  */
-public class StringUtil {
+public class StringUtils {
     /**
      * 判断字符串是否为null或者""
      * @param str
      * @return
      */
     public static boolean isEmpty(String str){
-        return StringUtils.isEmpty(str);
+        return str == null || str.length() == 0;
     }
 
     /**
@@ -23,7 +20,7 @@ public class StringUtil {
      * @return
      */
     public static boolean isBlank(String str){
-        return StringUtils.isBlank(str);
+        return str == null || str.trim().length() == 0;
     }
 
     /**

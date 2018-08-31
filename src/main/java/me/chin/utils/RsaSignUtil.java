@@ -1,4 +1,4 @@
-package moon.chaser.utils;
+package me.chin.utils;
 
 import org.apache.commons.codec.binary.Base64;
 
@@ -55,18 +55,18 @@ public class RsaSignUtil {
     public static Map<String, String> rsaSign(Map<String, String> paramMap,String privateKey) throws Exception {
         PrivateKey priKey = null;
         java.security.Signature signature = null;
-        if (StringUtil.isBlank(privateKey)){
+        if (StringUtils.isBlank(privateKey)){
             privateKey = PRIVATE_KEY;
         }
         String signType = paramMap.get("sign_type");
         String charset = paramMap.get("charset");
-        if(StringUtil.isEmpty(signType)){
+        if(StringUtils.isEmpty(signType)){
             signType = defaultConf.get("sign_type");
         }
-        if(StringUtil.isEmpty(charset)){
+        if(StringUtils.isEmpty(charset)){
             charset = defaultConf.get("charset");
         }
-        String content = MapUtil.map2OrderedString(paramMap);
+        String content =TransferUtils.map2OrderedString(paramMap);
         if (SIGN_TYPE_RSA.equals(signType)) {
             priKey = getPrivateKeyFromPKCS8(SIGN_TYPE_RSA, new ByteArrayInputStream(privateKey.getBytes()));
             signature = java.security.Signature.getInstance(SIGN_ALGORITHMS);
@@ -78,7 +78,7 @@ public class RsaSignUtil {
         }
         signature.initSign(priKey);
 
-        if (StringUtil.isEmpty(charset)) {
+        if (StringUtils.isEmpty(charset)) {
             signature.update(content.getBytes());
         } else {
             signature.update(content.getBytes(charset));
@@ -93,7 +93,7 @@ public class RsaSignUtil {
 
 
     private static PrivateKey getPrivateKeyFromPKCS8(String algorithm, InputStream ins) throws Exception {
-        if (ins == null || StringUtil.isEmpty(algorithm)) {
+        if (ins == null || StringUtils.isEmpty(algorithm)) {
             return null;
         }
 

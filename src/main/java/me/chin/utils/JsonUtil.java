@@ -1,4 +1,4 @@
-package moon.chaser.utils;
+package me.chin.utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +17,7 @@ public class JsonUtil {
         JSONArray jsonArr = (JSONArray) json;
         List<Map<String, Object>> arrList = new ArrayList<>();
         for (int i = 0; i < jsonArr.size(); ++i) {
-            arrList.add(strJson2Map(jsonArr.getString(i)));
+            arrList.add(jsonStr2Map(jsonArr.getString(i)));
         }
         return arrList;
     }
@@ -27,14 +27,14 @@ public class JsonUtil {
      * @param json
      * @return
      */
-    public static Map<String, Object> strJson2Map(String json) {
+    public static Map<String, Object> jsonStr2Map(String json) {
         JSONObject jsonObject = JSONObject.parseObject(json);
         Map<String, Object> resMap = new HashMap<>();
         Iterator<Entry<String, Object>> it = jsonObject.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry<String, Object> param = it.next();
             if (param.getValue() instanceof JSONObject) {
-                resMap.put(param.getKey(), strJson2Map(param.getValue().toString()));
+                resMap.put(param.getKey(), jsonStr2Map(param.getValue().toString()));
             } else if (param.getValue() instanceof JSONArray) {
                 resMap.put(param.getKey(), json2List(param.getValue()));
             } else {

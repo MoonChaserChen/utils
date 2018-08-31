@@ -1,6 +1,6 @@
 package test.utils;
 
-import moon.chaser.utils.JsonUtil;
+import me.chin.utils.JsonUtil;
 
 import java.util.Map;
 
@@ -30,7 +30,7 @@ public class JsonUtilTest {
                 "        }\n" +
                 "    }\n" +
                 "}";
-        Map<String, Object> map = JsonUtil.strJson2Map(str);
+        Map<String, Object> map = JsonUtil.jsonStr2Map(str);
         for (String key : map.keySet()) {
             System.out.println(key + "," + map.get(key));
         }

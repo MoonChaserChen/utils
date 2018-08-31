@@ -1,4 +1,4 @@
-package moon.chaser.utils;
+package me.chin.utils;
 
 
 import java.io.File;

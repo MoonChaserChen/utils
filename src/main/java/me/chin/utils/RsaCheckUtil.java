@@ -1,4 +1,4 @@
-package moon.chaser.utils;
+package me.chin.utils;
 
 import org.apache.commons.codec.binary.Base64;
 
@@ -55,18 +55,18 @@ public class RsaCheckUtil {
         java.security.Signature signature = null;
         String signType = map.get("sign_type");
         String charset = map.get("charset");
-        if(StringUtil.isEmpty(signType)){
+        if(StringUtils.isEmpty(signType)){
             signType = defaultConf.get("sign_type");
         }
-        if(StringUtil.isEmpty(charset)){
+        if(StringUtils.isEmpty(charset)){
             charset = defaultConf.get("charset");
         }
         String sign = map.get("sign");
         map.remove("sign");
-        if (StringUtil.isBlank(publicKey)){
+        if (StringUtils.isBlank(publicKey)){
             publicKey = PUBLIC_KEY;
         }
-        String content = MapUtil.map2OrderedString(map);
+        String content =TransferUtils.map2OrderedString(map);
         if(null == sign ){
             return false;
         }
@@ -80,7 +80,7 @@ public class RsaCheckUtil {
         }
         signature.initVerify(pubKey);
 
-        if (StringUtil.isEmpty(charset)) {
+        if (StringUtils.isEmpty(charset)) {
             signature.update(content.getBytes());
         } else {
             signature.update(content.getBytes(charset));

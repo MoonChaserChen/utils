@@ -1,15 +1,15 @@
 package test.utils;
 
-import moon.chaser.utils.StringUtil;
+import me.chin.utils.StringUtils;
 import org.junit.Test;
 
 /**
  * Created by ChenHouZhang on 2017/7/24.
  */
-public class StringUtilTest {
+public class StringUtilsTest {
     @Test
     public void testTrim(){
-        System.out.println(StringUtil.trimAllWhitespace(null) == null);
+        System.out.println(StringUtils.trimAllWhitespace(null) == null);
         System.out.println(Character.isWhitespace(' '));
     }
     @Test
@@ -26,7 +26,8 @@ public class StringUtilTest {
 
     @Test
     public void testTrimAll(){
-        String abc = " abc def ";
-        System.out.println("abc = " + StringUtil.trimAllWhitespace(abc).length());
+//        String abc = " abc def ";
+        String abc = "";
+        System.out.println("abc = " + StringUtils.trimAllWhitespace(abc).length());
     }
 }

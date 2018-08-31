@@ -1,6 +1,7 @@
-package moon.chaser.utils;
+package me.chin.utils;
 
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 
 /**
  * Created by ChenHouZhang on 2017/7/23.
@@ -12,16 +13,15 @@ public class XMLUtil {
      * @return
      */
     public static String Object2Xml(Object object, String classAlias){
-        XStream xStream = new XStream();
-        if (!StringUtil.isEmpty(classAlias)){
+        XStream xStream = new XStream(new DomDriver());
+        if (classAlias != null){
             xStream.alias(classAlias,object.getClass());
         }
-        return StringUtil.trimAllWhitespace(xStream.toXML(object));
+        return StringUtils.trimAllWhitespace(xStream.toXML(object));
     }
 
     public static <T> T Xml2Object(String xml, String classAlias ,T t){
-        XStream xStream = new XStream();
-        System.out.println("xStream = " + xStream);
+        XStream xStream = new XStream(new DomDriver());
         //为类名取个别名
         xStream.alias(classAlias, t.getClass());
         //由于上面有<unknow>标签，忽略掉，否则会报错
